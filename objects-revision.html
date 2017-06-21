@@ -1,0 +1,135 @@
+<html>
+    <head>
+        <title>Javascript objects</title>
+    </head>
+    <body>
+        <strong>Objects review</strong>
+        <p>and revison</p>
+        <p>objects are used to store diffrent data of functions in a orginised way. they are also used to hold data for for stuffl like name tags of lots of people. you could make a constructor that sets the propertys of an object easly for each person</p>
+        <script>
+        // here is a basic object in litaral notation
+            var object1 = {
+                n1: "hi",
+                n2: 5,
+                n3: [1,2,3]                
+            };
+            
+        // this is how you call a object value
+            console.log(object1.n1);
+            
+        // there can be objects within objects
+            var object2 = {
+                n1: {
+                    n11: 369, 
+                    n12: "abc"
+                },
+                n2: [[1,3,5,][2,4,6]],
+                n3: "I like javascript"
+            };
+            
+        // this is how you call the value of a objectwithin a object
+            console.log(object2.n1.n12);
+            
+        // they can also hold functions which are refered to as methods and they can hold arrays mthods are used to make calculations based on object values and update object properties
+            var object3 = {
+                n1: "functions are cool",
+                n2: function() {
+                    console.log("functions!");                                    },
+                n3: [8,9]
+            };
+            
+         // this is how you call a array value from an object
+            console.log(object3.n3[0])
+            
+         // this is how you call a function from an object
+            object3.n2()
+                        
+         // Anouther way to make objects is using contructers, here is a object using the default constructor
+            var object4 = new Object();
+         // using this contucter properties must be added in after the object is made
+            object4.n1 = "ex1";
+            object4.n2 = "ex2";
+            
+         // this is a for in loop, it runs trough all the properties of an object
+            for(var a in object4) {
+                console.log(a);
+                console.log(object4[a]);
+            };
+                        
+         // You dont have to contuctor is like using a template, You can make your own if you want to. This is done by making a function that will define the properties you want in an object. this is good for recording repeditive infomation like name and age for students in a classroom
+            var con1 = function(name,age){
+         // the "this" keyword refers to an object in context. this means that we can set or change an objects valuse without having to say what object we will be doing it to
+                this.name = name;
+                this.age = age;
+                this.species = "human";
+                
+                // methods can also be used to make a function change the propeties of a object (the values) 
+            this.editor = function(newName,newAge) {
+                this.name = newName;
+                this.age = newAge;                
+            }
+            }       
+  
+         // now that the template is made we can make new objects with it 
+            var student1 = new con1("bob",17);
+            var student2 = new con1("steave",16);
+         // this makes the objects student1 and student2 have the properties name and age
+            console.log(student1.name);
+            console.log(student2.age);
+            
+        
+            
+        // using this function will change the values of name and age if they need to be updated
+            student1.editor("boby",18);
+            student2.editor("steavy",17);
+            
+            console.log(student1.name);
+            console.log(student2.age);
+            console.log(student2.species);
+            
+          
+            
+            
+            
+            // you can make arrays of objects
+            
+            // Our Person constructor
+var Person = function(name,age) {
+    this.name = name;
+    this.age = age;
+};
+
+// Now we can make an array of people
+ var family = new Array();
+ family[0] = new Person("alice",40);
+ family[1] = new Person("bob",42);
+ family[2] = new Person("michelle",8);
+ family[3] = new Person("timmy",6);
+
+// loop through our new array
+for(num = 0; 4 > num ; num++) {
+    console.log(family[num].name);
+}
+            
+          // you can also pass variable valuse or object properties 
+            // Our person constructor
+function Person (name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// We can make a function which takes persons as arguments
+// This one computes the difference in ages between two people
+var ageDifference = function(person1, person2) {
+    return person1.age - person2.age;
+}
+
+var alice = new Person("Alice", 30);
+var billy = new Person("Billy", 25);
+
+// get the difference in age between alice and billy using our function
+var diff = ageDifference(alice,billy);
+            
+        </script>
+    </body>
+</html>

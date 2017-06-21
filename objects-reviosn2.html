@@ -1,0 +1,132 @@
+ <html>
+    <head>
+        <title>objects reviosn 2</title>
+    </head>
+    <body>
+        <p>
+            a cosntuctor is baicly a class, With all objects of that class being like seprate data type from other objects/you can use the protype keyword to make classes inherit methods fro other classes / objects can iherit values inherited from the object they inherited from, this is called tha chain of inheritence / variables defined in a class cannot be accesed outside of that class, like a local variable in a function, this is called a privet variable, by default most things in a object is public / all objects inherit from Object.prototype, this is where hasOwnProperty method comes from
+        </p>
+        <script>
+            // this is used to make stuff upper case
+            var lol = prompt("You response will be in ipper case").toUpperCase();
+            console.log(lol);
+            
+            // this generates a random decimal, multiplys it by PI and then rounds it to the nearist whole number
+      var youHit = Math.floor(Math.random() * Math.PI);
+            console.log(youHit);
+            
+            // this checks if a value is a number
+            var nan1 = isNaN(7);
+            var nan2 = isNaN("hi");
+            console.log(nan1);
+            console.log(nan2);
+            
+            // typeof checks a variables data type
+            var typ1 = "hi"
+            var typ2 = 6;
+            var typ3 = [4,6];
+            var typ4 = {
+                ex1: "good",
+                ex2: 67 }
+            var typ5 = function(){};
+            
+            console.log(typeof typ1 + " " + typeof typ2 + " " + typeof typ3 + " " + typeof typ4);
+            
+            //this checks if an object has a property
+            console.log(typ4.hasOwnProperty('ex1'));
+            console.log(typ4.hasOwnProperty('hi'));
+            
+            //this is where we use prototypes, these can be used to add a method to all objects using the same constuctor
+            function Dog (breed) {
+  this.breed = breed;
+};
+
+// here we make buddy and teach him how to bark
+var buddy = new Dog("golden Retriever");
+            
+Dog.prototype.bark = function() {
+  console.log("Woof");
+};
+buddy.bark();
+
+// here we make snoopy
+var snoopy = new Dog("Beagle");
+/// this time it works!
+snoopy.bark();
+            
+            // a cosntuctor is baicly a class, With all objects of that class being like seprate data type from other objects
+            
+            // you can use the protype keyword to make classes inherit methods fro other classes
+            
+            // the original Animal class and sayName method
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+}
+Animal.prototype.sayName = function() {
+    console.log("Hi my name is " + this.name);
+};
+
+// define a Penguin class
+var Penguin = function(name) {
+    this.name = name;
+    this.numLegs = 2;
+};
+
+// set its prototype to be a new instance of Animal
+Penguin.prototype = new Animal();
+
+var penguin = new Penguin(name);
+penguin.sayName;
+            
+            // objects can iherit values inherited from the object they inherited from, this is called tha chain of inheritence
+            
+            
+            // variables defined in a class cannot be accesed outside of that class, like a local variable in a function. this is called a privet variable
+            
+            
+            // to acces a privet variable you must return it trough a public method
+            
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  // you can also put a bit of a password on your private varibles
+   this.getBalance = function(pass) {
+      if (pass == 1234) return bankBalance;
+     else return "Wrong password.";
+      
+   };
+}
+
+var john = new Person('John','Smith',30);
+console.log(john.bankBalance);
+
+// create a new variable myBalance that calls getBalance()
+            
+var myBalance = john.getBalance(1234);
+console.log(myBalance);
+                       
+            
+            console.log("-------------");
+                      
+            // all objects inherit from Object.prototype, this is where hasOwnProperty method comes from
+            // what is this "Object.prototype" anyway...?
+var prototypeType = typeof Object.prototype;
+console.log(prototypeType);
+
+// now let's examine it!
+var hasOwn = Object.prototype.hasOwnProperty('hasOwnProperty');
+console.log(hasOwn);
+            
+           
+            
+            
+            
+            
+            
+            
+        </script>
+    </body>
+</html>
